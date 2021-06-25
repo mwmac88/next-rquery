@@ -1,6 +1,6 @@
+import { OddWithValues } from "@/modules/odds/types";
 import { random } from "lodash";
 import { NextApiRequest, NextApiResponse } from "next";
-import { OddWithValues } from './types';
 
 const odds: Record<number, Omit<OddWithValues, 'values'>> = {
 	5001: {
