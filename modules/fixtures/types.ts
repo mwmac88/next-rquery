@@ -1,4 +1,4 @@
-import { FixtureStatus, VenueType } from "@/common/types";
+import { CompetitionID, FixtureStatus, VenueType } from "@/common/types";
 
 export interface Team {
   id: number;
@@ -12,5 +12,6 @@ export interface Fixture {
   date: string;
   status: FixtureStatus;
   inplay: boolean;
+  competitionID: CompetitionID;
   teams: Team[];
 }
