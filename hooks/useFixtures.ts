@@ -1,7 +1,7 @@
 import { Fixture } from "@/modules/fixtures/types";
 import { useQuery } from "react-query";
 
-export const getFixtures = async () => {
+export const getFixtures = async (): Promise<Fixture[]> => {
   const data = await fetch(
     'http://localhost:3000/api/fixtures'
   );

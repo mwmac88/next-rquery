@@ -1,6 +1,7 @@
-import { FixtureID } from "@/common/types";
+import { FixtureID, SelectionID } from "@/common/types";
 
 export type OddsValue = {
+  selectionID: SelectionID;
   value: string;
   odd: number;
 }

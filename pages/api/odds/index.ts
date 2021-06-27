@@ -1,7 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiResponse } from 'next'
 
 export default function handler(
-  req: NextApiRequest,
   res: NextApiResponse<string>
 ) {
   res.status(200).json('welcome to the home of odds')

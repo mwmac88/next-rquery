@@ -1,6 +1,7 @@
 export type CompetitionID = number;
 export type FixtureID = number;
 export type TeamID = number;
+export type SelectionID = number;
 
 export type FixtureStatus = 'INPLAY' | 'SUSPENDED' | 'POSTPONED' | 'NOTPLAYED';
 

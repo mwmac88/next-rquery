@@ -1,19 +1,12 @@
-import { OddWithValues } from "@/modules/odds/types";
-import { random } from "lodash";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const odds: Record<number, Omit<OddWithValues, 'values'>> = {
-	5001: {
-		fixtureID: 4001,
-		name: 'Match Odds'
-	}
-}
+import { OddWithValues } from "@/modules/odds/types";
 
-type Data = OddWithValues;
+import odds from '@/modules/odds/api/odds';
 
 export default function handler(
 	req: NextApiRequest,
-	res: NextApiResponse<Data | Error>
+	res: NextApiResponse<OddWithValues | Error>
 	) {
 	console.log(req.query)
 	const { fixtureID: fixtureIDParam } = req.query;
@@ -25,22 +18,5 @@ export default function handler(
 		return res.status(404).json(new Error(`No valid Fixture with ID ${fixtureIDParam}`))
 	}
 		
-	return res.status(200).json({
-		name: validOdd.name,
-		fixtureID: validOdd.fixtureID,
-		values: [
-			{
-				value: 'Home',
-				odd: random(0.5, 4.9)
-			},
-			{
-				value: 'Draw',
-				odd: random(0.5, 4.9)
-			},
-			{
-				value: 'Away',
-				odd: random(0.5, 4.9)
-			}
-		]
-	})
+	return res.status(200).json(validOdd)
 }

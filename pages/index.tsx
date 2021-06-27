@@ -3,15 +3,19 @@ import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 
 import { getFixtures } from '@/hooks/useFixtures';
+import Fixtures from '@/modules/fixtures/components/Fixtures';
 
 const Home = () => {
   return (
     <div>
       <Head>
-        <title>Quidditch Bet</title>
+        <title>Quid-Bet</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <h1>Hello World!</h1>
+      <h1>Quid-Bet</h1>
+      <h2>Quidditch Betting Platform</h2>
+
+      <Fixtures />
     </div>
   )
 }

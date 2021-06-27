@@ -15,3 +15,9 @@ export interface Fixture {
   competitionID: CompetitionID;
   teams: Team[];
 }
+
+export interface FixturesRequest {
+  fixtures: Fixture[];
+  toDate?: Date;
+}
+
