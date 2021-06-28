@@ -4,9 +4,7 @@ import FixtureCard from "./FixtureCard";
 import OddsView from "@/modules/odds/components/OddsView";
 
 const Fixtures: React.FC = (): ReactElement => {
-  const { data, error, isLoading, isSuccess } = useFixtures();
-  
-  if (error) return <div>Error!!!</div>
+  const { data, isLoading, isSuccess } = useFixtures();
   
   if (isLoading) return <div>Loading...</div>
 

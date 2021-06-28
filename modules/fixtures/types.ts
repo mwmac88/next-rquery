@@ -1,4 +1,4 @@
-import { CompetitionID, FixtureStatus, VenueType } from "@/common/types";
+import { CompetitionID, FixtureID, FixtureStatus, VenueType } from "@/common/types";
 
 export interface Team {
   id: number;
@@ -7,7 +7,7 @@ export interface Team {
 }
 
 export interface Fixture {
-  id: number;
+  id: FixtureID;
   name: string;
   date: string;
   status: FixtureStatus;
@@ -21,3 +21,4 @@ export interface FixturesRequest {
   toDate?: Date;
 }
 
+export type FixturesResponse = Record<FixtureID, Fixture>;

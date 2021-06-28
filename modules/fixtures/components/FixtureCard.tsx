@@ -9,7 +9,7 @@ interface Props {
 
 const FixtureCard: React.FC<Props> = ({fixture, children}): ReactElement => {
   const { name, date, status, inplay, teams } = fixture;
-  const formattedDate = format(new Date(date), 'do-MMM-yyyy');
+  const formattedDate = format(new Date(date), 'do-MMM-yyyy @ kk:mm');
   return (
     <div>
       <h3>{name}</h3>
@@ -17,8 +17,7 @@ const FixtureCard: React.FC<Props> = ({fixture, children}): ReactElement => {
       <div>
         {teams.map((team) => (
           <div key={team.id}>
-            {team.venueType}
-            {team.name}
+            {`${team.venueType}: ${team.name}`}
           </div>
           ))}
       </div>

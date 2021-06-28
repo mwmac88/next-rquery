@@ -1,4 +1,4 @@
-import { FixtureID, SelectionID } from "@/common/types";
+import { FixtureID, OddID, SelectionID } from "@/common/types";
 
 export type OddsValue = {
   selectionID: SelectionID;
@@ -7,7 +7,9 @@ export type OddsValue = {
 }
 
 export interface OddWithValues {
+  id: OddID;
   name: string;
-  fixtureID: FixtureID;
   values: OddsValue[];
 }
+
+export type FixtureOdds = Record<FixtureID, OddWithValues[]>

@@ -6,17 +6,14 @@ import odds from '@/modules/odds/api/odds';
 
 export default function handler(
 	req: NextApiRequest,
-	res: NextApiResponse<OddWithValues | Error>
+	res: NextApiResponse<OddWithValues[] | Error>
 	) {
-	console.log(req.query)
+	res.setHeader('Cache-Control', 's-maxage=30, stale-while-revalidate');
 	const { fixtureID: fixtureIDParam } = req.query;
 	const fixtureID = Number(fixtureIDParam);
-	
-	const validOdd = Object.values(odds).find(({fixtureID: fixID}) => fixID === fixtureID)
-	
-	if (!validOdd) {
-		return res.status(404).json(new Error(`No valid Fixture with ID ${fixtureIDParam}`))
+
+	if (!odds[fixtureID]) {
+		return res.status(404).send(new Error(`No odds found for ${fixtureID}`));
 	}
-		
-	return res.status(200).json(validOdd)
+	return res.status(200).json(odds[fixtureID])
 }
