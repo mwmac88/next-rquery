@@ -1,10 +1,9 @@
 import { FixtureID, OddID } from "@/common/types";
 import { OddWithValues } from "@/modules/odds/types";
-import { useQuery, UseQueryResult } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 
 export const getOdds = async (fixtureID: FixtureID): Promise<OddWithValues[]> => {
   if (typeof fixtureID === 'undefined') return Promise.reject(new Error('Invalid id'));
-
   const data = await fetch(
     `http://localhost:3000/api/odds/${fixtureID}`
   );
@@ -22,22 +21,21 @@ export const getOdds = async (fixtureID: FixtureID): Promise<OddWithValues[]> =>
 
 export function useOddsQuery(fixtureID: FixtureID) {
   return useQuery<OddWithValues[], Error>(
-    ['fixtures', fixtureID],
+    ['odds', fixtureID],
     () => getOdds(fixtureID),
     { 
       refetchInterval: 30000,
-      retry: false
+      retry: false,
     }); 
 }
 
 export function useOddsByID(fixtureID: FixtureID, oddIDs: OddID[] = [501]) {
-  console.log(oddIDs);
   return useQuery<OddWithValues[], Error>(
-    ['fixtures', fixtureID], 
+    ['odds', fixtureID], 
     () => getOdds(fixtureID),
     { 
       select: odds => odds.filter(odd => oddIDs?.includes(odd.id)),
-      refetchInterval: 5000,
+      refetchInterval: 30000,
       retry: false 
     }
   ); 

@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import { useOddsByID } from "@/hooks/useOdds";
 import { FixtureID, OddID } from "@/common/types";
 import OddCard from "./OddCard";
+import { useQueryClient } from "react-query";
 
 interface Props {
   fixtureId: FixtureID;
@@ -11,17 +12,21 @@ interface Props {
 const OddsView: React.FC<Props> = ({ fixtureId, oddIDs }): ReactElement => {
   const { data, isLoading, isSuccess } = useOddsByID(fixtureId, oddIDs);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div className='text-center'>Loading...</div>;
 
   if (data && isSuccess) {
     return (
-      <div>
-        {data.map((odd) => <OddCard key={odd.id} odd={odd} />)}
-      </div>
+      <>
+        {data.map(odd => <OddCard key={odd.id} odd={odd} />)}
+      </>
     );
   }
 
-  return <div>Odds not currently avialable</div>;
+  return (
+    <div className='py-4 text-center'>
+      Odds Not Avialable
+    </div>
+  )
 };
 
 export default OddsView;

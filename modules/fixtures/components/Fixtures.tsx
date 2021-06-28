@@ -9,14 +9,16 @@ const Fixtures: React.FC = (): ReactElement => {
   if (isLoading) return <div>Loading...</div>
 
   if (data && isSuccess) return (
-    <div>
-      Upcoming Fixtures:
+    <div className='mt-6'>
+      <h3 className='font-medium mb-4 text-center'>Upcoming Fixtures</h3>
 
-      {data.map((fixture) => 
+      <div className='grid grid-flow-row md:grid-flow-col gap-4'>
+      {data.map((fixture) =>
         <FixtureCard key={fixture.id} fixture={fixture}>
           <OddsView fixtureId={fixture.id} />
         </FixtureCard>
       )}
+      </div>
       
     </div>
   );

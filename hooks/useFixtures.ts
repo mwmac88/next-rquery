@@ -7,7 +7,7 @@ export const getFixtures = async (): Promise<Fixture[]> => {
   );
 
   if (!data.ok) {
-    throw new Error('Network response was not ok')
+    return Promise.reject(data.statusText)
   }
 
   return data.json()

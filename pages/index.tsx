@@ -7,13 +7,14 @@ import Fixtures from '@/modules/fixtures/components/Fixtures';
 
 const Home = () => {
   return (
-    <div>
+    <div className='container mx-auto px-4'>
       <Head>
         <title>Quid-Bet</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <h1>Quid-Bet</h1>
-      <h2>Quidditch Betting Platform</h2>
+      
+      <h1 className="text-3xl font-mono font-bold uppercase text-center">Quid-Bet</h1>
+      <h2 className="text-md font-medium italic uppercase text-center">The Only Quidditch Betting Platform</h2>
 
       <Fixtures />
     </div>
