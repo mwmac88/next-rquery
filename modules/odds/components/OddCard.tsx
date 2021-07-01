@@ -1,4 +1,7 @@
 import React from "react";
+import { useIsFetching } from "react-query";
+import Image from 'next/image'
+
 import { OddsValue, OddWithValues } from "../types";
 
 interface Props {
@@ -6,20 +9,32 @@ interface Props {
 }
 
 const OddCard = ({ odd }: Props) => {
-  const { id, name, values } = odd;
-  return (
-    <div className='my-5' key={id}>
-      <div className='font-semibold text-center'>{name}</div>
+  const isFetching = useIsFetching();
+  const { name, values } = odd;
 
-      <div className='grid grid-flow-row md:grid-flow-col'>
-      {values.map(({ odd, selectionID, value }: OddsValue) => (
-        <div className='grid grid-flow-row text-center' key={selectionID}>
-          <div className='font-medium'>{value}</div>
-          <div className='bg-blue-700 rounded-sm mx-auto w-16'>
-           <span className='text-white'>{Number(odd).toFixed(2)}</span>
+  return (
+    <div className="my-5">
+      <div className="font-semibold text-center">{name}</div>
+
+      <div className="grid grid-flow-row md:grid-flow-col">
+        {values.map(({ odd, selectionID, value }: OddsValue) => (
+          <div className="grid grid-flow-row text-center" key={selectionID}>
+            <div className="font-medium">{value}</div>
+            <button className={`bg-blue-700 rounded-sm mx-auto w-16 ${isFetching ? `disabled` : ``} `}>
+              {isFetching ? (
+                <Image
+                  src="/loading.svg"
+                  alt="loading spinner"
+                  height={30}
+                  width={30}
+                  className='p-4 text-center'
+                />
+              ) : (
+                <span className="text-white">{Number(odd).toFixed(2)}</span>
+              )}
+            </button>
           </div>
-        </div>
-      ))}
+        ))}
       </div>
     </div>
   );

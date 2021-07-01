@@ -1,8 +1,9 @@
 import React, { ReactElement } from "react";
+
 import { useOddsByID } from "@/hooks/useOdds";
 import { FixtureID, OddID } from "@/common/types";
 import OddCard from "./OddCard";
-import { useQueryClient } from "react-query";
+import LoadingCard from "./LoadingCard";
 
 interface Props {
   fixtureId: FixtureID;
@@ -12,7 +13,7 @@ interface Props {
 const OddsView: React.FC<Props> = ({ fixtureId, oddIDs }): ReactElement => {
   const { data, isLoading, isSuccess } = useOddsByID(fixtureId, oddIDs);
 
-  if (isLoading) return <div className='text-center'>Loading...</div>;
+  if (isLoading) <LoadingCard />
 
   if (data && isSuccess) {
     return (

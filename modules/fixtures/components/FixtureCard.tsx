@@ -16,7 +16,7 @@ const FixtureCard: React.FC<Props> = ({fixture, children}): ReactElement => {
       <div className='text-center text-indigo-500 font-medium mb-4'>{formattedDate}</div>
       <div className='grid grid-rows-2 divide-y-2 md:grid-cols-2 md:divide-x-2 md:divide-y-0 md:grid-rows-none divide-gray-400 w-1/2 md:w-auto mx-auto'>
         {teams.map((team) => (
-          <div className='text-center' key={team.id}>
+          <div className='text-center px-2' key={team.id}>
             <div className='mb-1 font-medium'>{team.venueType}</div> 
             <div>{team.name}</div>
           </div>
