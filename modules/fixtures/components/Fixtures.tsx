@@ -1,25 +1,33 @@
 import React, { ReactElement } from "react";
 import { useRouter } from 'next/router'
 
-import { useFixtures } from "@/hooks/useFixtures";
+import { useFixtures, usePrefetchFixtures } from "@/hooks/useFixtures";
 import OddsView from "@/modules/odds/components/OddsView";
 
 import FixtureCard from "./FixtureCard";
 import LoadingCard from "./LoadingCard";
+import { useQueryClient } from "react-query";
 
-const Fixtures: React.FC = (): ReactElement => {
+type Props = {
+  limit?: number;
+}
+
+const Fixtures: React.FC<Props> = ({limit}): ReactElement => {
+  const queryClient = useQueryClient();
   const router = useRouter();
-  const { data, isLoading, isSuccess } = useFixtures();
+  const [page, setPage] = React.useState(1);
+  const { data, isLoading, isSuccess } = useFixtures({page, limit});
+  
+  usePrefetchFixtures(page, queryClient, data?.hasMore)
 
   if (isLoading) return <LoadingCard />;
 
-  if (data && isSuccess)
+  if (data?.fixtures && isSuccess) {
+    const {fixtures} = data;
     return (
       <div className="mt-6">
-        <h3 className="font-medium mb-4 text-center">Upcoming Fixtures</h3>
-
-        <div className="grid grid-flow-col gap-4">
-          {data.map((fixture) => (
+        <div className="grid grid-cols-2 row-auto gap-4">
+          {fixtures.map((fixture) => (
             <div
               className='cursor-pointer'
               key={fixture.id}
@@ -36,6 +44,7 @@ const Fixtures: React.FC = (): ReactElement => {
         </div>
       </div>
     );
+  }
 
   return <h2>No fixtures found, please try again later</h2>;
 };

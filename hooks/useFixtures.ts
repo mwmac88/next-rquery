@@ -1,9 +1,17 @@
-import { Fixture } from "@/modules/fixtures/types";
-import { useQuery } from "react-query";
+import { Fixture, FixturesResponse } from "@/modules/fixtures/types";
+import React from "react";
+import { QueryClient, useQuery } from "react-query";
 
-export const getFixtures = async (): Promise<Fixture[]> => {
+type UseFixturesProps = {
+  page: number;
+  limit?: number;
+}
+
+export const getFixtures = async ({page = 1, limit}: UseFixturesProps): Promise<FixturesResponse> => {
+  const baseFixturesEndpoint = `http://localhost:3000/api/fixtures?page=${page}`;
+   
   const data = await fetch(
-    'http://localhost:3000/api/fixtures'
+    limit ? `${baseFixturesEndpoint}&limit=${limit}` : baseFixturesEndpoint
   );
 
   if (!data.ok) {
@@ -13,6 +21,14 @@ export const getFixtures = async (): Promise<Fixture[]> => {
   return data.json()
 };
 
-export function useFixtures() {
-  return useQuery<Fixture[], Error>(['fixtures'], () => getFixtures()); 
+export function useFixtures({page, limit}: UseFixturesProps) {
+  return useQuery<FixturesResponse, Error>(['fixtures'], () => getFixtures({page, limit}), { keepPreviousData: true }); 
+}
+
+export function usePrefetchFixtures(page: number, queryClient: QueryClient, hasMore?: boolean) {
+  React.useEffect(() => {
+    if(hasMore) {
+      queryClient.prefetchQuery<FixturesResponse, Error>(['fixtures'], () => getFixtures({page}))
+    }
+  }, [hasMore, page, queryClient])
 }

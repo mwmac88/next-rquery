@@ -11,7 +11,7 @@ const FixtureCard: React.FC<Props> = ({fixture, children}): ReactElement => {
   const { name, date, status, inplay, teams } = fixture;
   const formattedDate = format(new Date(date), 'do-MMM-yyyy @ kk:mm');
   return (
-    <div className='border border-solid border-gray-200 rounded-md drop-shadow shadow p-4'>
+    <div className='flex flex-col justify-center h-full p-4 border border-solid border-gray-200 rounded-md hover:shadow'>
       <h3 className='font-medium text-center text-lg'>{name}</h3>
       <div className='text-center text-indigo-500 font-medium mb-4'>{formattedDate}</div>
       <div className='grid grid-rows-2 divide-y-2 md:grid-cols-2 md:divide-x-2 md:divide-y-0 md:grid-rows-none divide-gray-400 w-1/2 md:w-auto mx-auto'>

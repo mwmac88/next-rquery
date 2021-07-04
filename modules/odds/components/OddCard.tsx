@@ -10,11 +10,11 @@ interface Props {
 
 const OddCard = ({ odd }: Props) => {
   const isFetching = useIsFetching();
-  const { name, values } = odd;
+  const { name: oddsType, values } = odd;
 
   return (
     <div className="my-5">
-      <div className="font-semibold text-center">{name}</div>
+      <div className="font-semibold text-center mb-1">{oddsType}</div>
 
       <div className="grid grid-flow-row md:grid-flow-col">
         {values.map(({ odd, selectionID, value }: OddsValue) => (

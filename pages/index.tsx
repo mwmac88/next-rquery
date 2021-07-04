@@ -16,14 +16,17 @@ const Home = () => {
       <h1 className="text-3xl font-mono font-bold uppercase text-center">Quid-Bet</h1>
       <h2 className="text-md font-medium italic uppercase text-center">The Only Quidditch Betting Platform</h2>
 
-      <Fixtures />
+      <section>
+        <h3 className="font-medium mb-4 text-center">Upcoming Fixtures</h3>
+        <Fixtures limit={2} />
+      </section>
     </div>
   )
 }
 
 export async function getStaticProps() {
   const queryClient = new QueryClient()
-  await queryClient.prefetchQuery(['fixtures'], () => getFixtures());
+  await queryClient.prefetchQuery(['fixtures'], () => getFixtures({page: 1}));
 
   return {
     props: {

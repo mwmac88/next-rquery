@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import fixtures from '@/modules/fixtures/api/fixtures';
+import fixtures from '@/modules/fixtures/data/fixtures';
 import { Fixture } from '@/modules/fixtures/types';
 
 export default function handler(

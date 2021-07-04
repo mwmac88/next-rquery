@@ -1,5 +1,5 @@
 import type { NextApiResponse } from 'next'
-import teams from '@/modules/teams/api/teams';
+import teams from '@/modules/teams/data/teams';
 import { Team } from '@/common/types';
 
 export default function handler(

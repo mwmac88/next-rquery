@@ -21,4 +21,7 @@ export interface FixturesRequest {
   toDate?: Date;
 }
 
-export type FixturesResponse = Record<FixtureID, Fixture>;
+export interface FixturesResponse {
+  fixtures: Fixture[];
+  hasMore: boolean;
+}
