@@ -37,7 +37,7 @@ const Fixtures: React.FC<Props> = ({limit}): ReactElement => {
               })}
             >
               <FixtureCard fixture={fixture}>
-                <OddsView fixtureID={fixture.id} />
+                <OddsView fixtureID={fixture.id} oddsTypes={['MATCH_ODDS']} />
               </FixtureCard>
             </div>
           ))}

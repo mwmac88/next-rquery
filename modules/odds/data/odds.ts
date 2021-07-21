@@ -6,6 +6,7 @@ export const odds: FixtureOdds = {
     {
       id: 501,
       name: "Match Odds",
+      type: 'MATCH_ODDS',
       values: [
         {
           selectionID: 6001,
@@ -27,14 +28,15 @@ export const odds: FixtureOdds = {
     {
       id: 502,
       name: "Goals Over/Under",
+      type: 'GOALS_OVER_UNDER',
       values: [
         {
-          selectionID: 6003,
+          selectionID: 6004,
           value: "Over 1.5",
           odd: getRandomOdd(),
         },
         {
-          selectionID: 6004,
+          selectionID: 6005,
           value: "Under 1.5",
           odd: getRandomOdd(),
         },
@@ -45,6 +47,7 @@ export const odds: FixtureOdds = {
     {
       id: 501,
       name: "Match Odds",
+      type: 'MATCH_ODDS',
       values: [
         {
           selectionID: 6101,
@@ -66,14 +69,15 @@ export const odds: FixtureOdds = {
     {
       id: 502,
       name: "Goals Over/Under",
+      type: 'GOALS_OVER_UNDER',
       values: [
         {
-          selectionID: 6103,
+          selectionID: 6104,
           value: "Over 1.5",
           odd: getRandomOdd(),
         },
         {
-          selectionID: 6104,
+          selectionID: 6105,
           value: "Under 1.5",
           odd: getRandomOdd(),
         },

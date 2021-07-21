@@ -3,7 +3,7 @@ import React from "react";
 import { QueryClient, useQuery } from "react-query";
 
 type UseFixturesProps = {
-  page: number;
+  page?: number;
   limit?: number;
 }
 
@@ -25,7 +25,7 @@ export function useFixtures({page, limit}: UseFixturesProps) {
   return useQuery<FixturesResponse, Error>(['fixtures'], () => getFixtures({page, limit}), { keepPreviousData: true }); 
 }
 
-export function usePrefetchFixtures(page: number, queryClient: QueryClient, hasMore?: boolean) {
+export function usePrefetchFixtures({page = 1, queryClient, hasMore}: {page: number, queryClient: QueryClient, hasMore?: boolean}) {
   React.useEffect(() => {
     if(hasMore) {
       queryClient.prefetchQuery<FixturesResponse, Error>(['fixtures'], () => getFixtures({page}))

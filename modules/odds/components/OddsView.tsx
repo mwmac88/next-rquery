@@ -1,17 +1,18 @@
 import React, { ReactElement } from "react";
 
-import { useOddsByID } from "@/hooks/useOdds";
-import { FixtureID, OddID } from "@/common/types";
+import { useOddsByType, useOddsQuery } from "@/hooks/useOdds";
+import { FixtureID } from "@/common/types";
 import OddCard from "./OddCard";
 import LoadingCard from "./LoadingCard";
+import { OddsType } from "../types";
 
 interface Props {
   fixtureID: FixtureID;
-  oddIDs?: OddID[];
+  oddsTypes?: OddsType[];
 }
 
-const OddsView: React.FC<Props> = ({ fixtureID, oddIDs }): ReactElement => {
-  const { data, isLoading, isSuccess } = useOddsByID(fixtureID, oddIDs);
+const OddsView: React.FC<Props> = ({ fixtureID, oddsTypes }): ReactElement => {
+  const { data, isLoading, isSuccess } = useOddsByType({fixtureID, oddsTypes});
 
   if (isLoading) <LoadingCard />
 

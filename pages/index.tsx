@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 
-import { getFixtures } from '@/hooks/useFixtures';
+import { getFixtures, usePrefetchFixtures } from '@/hooks/useFixtures';
 import Fixtures from '@/modules/fixtures/components/Fixtures';
 
 const Home = () => {

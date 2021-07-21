@@ -10,13 +10,10 @@ import { getFixtures } from '@/hooks/useFixtures'
 const Fixture = () => {
   const router = useRouter();
   const { fixtureID } = router.query;
-
-  console.log(fixtureID);
-  
   const { data } = useFixture(Number(fixtureID));
   
   if (data) {
-    const { name,  } = data;
+    const { name } = data;
 
     return (<div>{name}</div>)
   }
