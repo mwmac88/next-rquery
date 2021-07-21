@@ -1,7 +1,8 @@
+import { FixtureID } from "@/common/types";
 import { Fixture } from "../types";
 
-const fixtures: Fixture[] = [
-  {
+const fixtures: Record<FixtureID, Fixture> = {
+  301: {
     id: 301,
     name: "Appleby Arrows vs Montrose Magpies",
     date: "2021-01-01T12:00:00.000Z",
@@ -21,7 +22,7 @@ const fixtures: Fixture[] = [
       },
     ],
   },
-  {
+  302: {
     id: 302,
     name: "Caerphilly Catapults vs Falmouth Falcons",
     date: "2021-01-01T15:00:00.000Z",
@@ -41,7 +42,7 @@ const fixtures: Fixture[] = [
       },
     ],
   },
-  {
+  303: {
     id: 303,
     name: "Ballycastle Bats vs Kenmare Kestrels",
     date: "2021-01-01T15:00:00.000Z",
@@ -61,7 +62,7 @@ const fixtures: Fixture[] = [
       },
     ],
   },
-  {
+  304: {
     id: 304,
     name: "Chudley Cannons vs Banchory Bangers",
     date: "2021-01-01T17:00:00.000Z",
@@ -81,7 +82,7 @@ const fixtures: Fixture[] = [
       },
     ],
   },
-  {
+  305: {
     id: 305,
     name: "Chudley Cannons vs Kenmare Kestrels",
     date: "2021-01-07T12:00:00.000Z",
@@ -101,7 +102,7 @@ const fixtures: Fixture[] = [
       }
     ],
   },
-  {
+  306: {
     id: 306,
     name: "Ballycastle Bats vs Appleby Arrows",
     date: "2021-01-07T12:00:00.000Z",
@@ -121,7 +122,7 @@ const fixtures: Fixture[] = [
       },
     ],
   },
-  {
+  307: {
     id: 307,
     name: "Montrose Magpies vs Kenmare Kestrels",
     date: "2021-01-07T15:00:00.000Z",
@@ -141,7 +142,7 @@ const fixtures: Fixture[] = [
       },
     ],
   },
-  {
+  308: {
     id: 308,
     name: "Falmouth Falcons vs Chudley Cannons",
     date: "2021-01-07T15:00:00.000Z",
@@ -161,7 +162,7 @@ const fixtures: Fixture[] = [
       },
     ],
   },
-  {
+  309: {
     id: 309,
     name: "Caerphilly Catapults vs Banchory Bangers'",
     date: "2021-01-01T17:00:00.000Z",
@@ -181,7 +182,7 @@ const fixtures: Fixture[] = [
       },
     ],
   },
-  {
+  310: {
     id: 310,
     name: "Appleby Arrows vs Kenmare Kestrels",
     date: "2021-01-14T12:00:00.000Z",
@@ -201,7 +202,7 @@ const fixtures: Fixture[] = [
       },
     ],
   },
-  {
+  311: {
     id: 311,
     name: "Caerphilly Catapults vs Chudley Cannons",
     date: "2021-01-14T12:00:00.000Z",
@@ -221,7 +222,7 @@ const fixtures: Fixture[] = [
       }
     ],
   },
-  {
+  312: {
     id: 312,
     name: "Ballycastle Bats vs Banchory Bangers",
     date: "2021-01-15T12:00:00.000Z",
@@ -241,6 +242,6 @@ const fixtures: Fixture[] = [
       },
     ],
   },
-];
+};
 
 export default fixtures;

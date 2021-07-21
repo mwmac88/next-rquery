@@ -8,11 +8,11 @@ export default function handler(
 ) {
   const { fixtureID: fixtureIDParam } = req.query;
 	const fixtureID = Number(fixtureIDParam);
-  const validFixture = fixtures.find(fixture => fixture.id === fixtureID);
 
-	if (!validFixture) {
+	if (!fixtures[fixtureID] || isNaN(fixtureID)) {
+    console.error(`No fixture for id : ${fixtureID}`)
 		return res.status(404).send(new Error(`No fixture found for ${fixtureID}`));
 	}
 
-  res.status(200).json(validFixture)
+  res.status(200).json(fixtures[fixtureID])
 }

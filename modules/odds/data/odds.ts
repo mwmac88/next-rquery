@@ -1,9 +1,7 @@
-import { random } from "lodash";
+import { getRandomOdd } from "@/common/utils";
 import { FixtureOdds } from "../types";
 
-const getRandomOdd = (min: number = 0.5, max: number = 4.9) => random(min, max);
-
-const odds: FixtureOdds = {
+export const odds: FixtureOdds = {
   301: [
     {
       id: 501,
@@ -83,5 +81,3 @@ const odds: FixtureOdds = {
     },
   ],
 };
-
-export default odds;

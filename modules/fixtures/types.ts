@@ -22,6 +22,6 @@ export interface FixturesRequest {
 }
 
 export interface FixturesResponse {
-  fixtures: Fixture[];
+  fixtures: Record<FixtureID, Fixture>;
   hasMore: boolean;
 }

@@ -1,4 +1,4 @@
-import { Fixture, FixturesResponse } from "@/modules/fixtures/types";
+import { FixturesResponse } from "@/modules/fixtures/types";
 import React from "react";
 import { QueryClient, useQuery } from "react-query";
 

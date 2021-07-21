@@ -22,12 +22,12 @@ const Fixtures: React.FC<Props> = ({limit}): ReactElement => {
 
   if (isLoading) return <LoadingCard />;
 
-  if (data?.fixtures && isSuccess) {
+  if (isSuccess && data?.fixtures) {
     const {fixtures} = data;
     return (
       <div className="mt-6">
         <div className="grid grid-cols-2 row-auto gap-4">
-          {fixtures.map((fixture) => (
+          {Object.values(fixtures).map((fixture) => (
             <div
               className='cursor-pointer'
               key={fixture.id}
@@ -37,7 +37,7 @@ const Fixtures: React.FC<Props> = ({limit}): ReactElement => {
               })}
             >
               <FixtureCard fixture={fixture}>
-                <OddsView fixtureId={fixture.id} />
+                <OddsView fixtureID={fixture.id} />
               </FixtureCard>
             </div>
           ))}

@@ -6,12 +6,12 @@ import OddCard from "./OddCard";
 import LoadingCard from "./LoadingCard";
 
 interface Props {
-  fixtureId: FixtureID;
+  fixtureID: FixtureID;
   oddIDs?: OddID[];
 }
 
-const OddsView: React.FC<Props> = ({ fixtureId, oddIDs }): ReactElement => {
-  const { data, isLoading, isSuccess } = useOddsByID(fixtureId, oddIDs);
+const OddsView: React.FC<Props> = ({ fixtureID, oddIDs }): ReactElement => {
+  const { data, isLoading, isSuccess } = useOddsByID(fixtureID, oddIDs);
 
   if (isLoading) <LoadingCard />
 

@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import { OddWithValues } from "@/modules/odds/types";
 
-import odds from '@/modules/odds/api/odds';
+import { odds } from '@/modules/odds/data/odds';
 
 export default function handler(
 	req: NextApiRequest,
