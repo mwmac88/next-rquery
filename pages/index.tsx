@@ -2,10 +2,13 @@ import Head from 'next/head'
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 
-import { getFixtures, usePrefetchFixtures } from '@/hooks/useFixtures';
-import Fixtures from '@/modules/fixtures/components/Fixtures';
+import { getFixtures, useFixtures, usePrefetchFixtures } from '@/hooks/useFixtures';
+import UpcomingFixtures from '@/modules/fixtures/components/UpcomingFixtures';
+import FixtureLoadingCard from '@/modules/fixtures/components/FixtureLoadingCard';
 
 const Home = () => {
+  const { data: fixturesData, isLoading: fixturesLoading, isSuccess: fixturesSuccess } = useFixtures({limit: 2});
+
   return (
     <div className='container mx-auto px-4'>
       <Head>
@@ -18,7 +21,12 @@ const Home = () => {
 
       <section>
         <h3 className="font-medium mb-4 text-center">Upcoming Fixtures</h3>
-        <Fixtures limit={2} />
+
+        {fixturesLoading ? 
+          <FixtureLoadingCard /> : 
+          fixturesSuccess && fixturesData?.fixtures && 
+          <UpcomingFixtures fixtures={fixturesData.fixtures} /> 
+        }
       </section>
     </div>
   )

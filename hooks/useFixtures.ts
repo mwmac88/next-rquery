@@ -25,10 +25,8 @@ export function useFixtures({page, limit}: UseFixturesProps) {
   return useQuery<FixturesResponse, Error>(['fixtures'], () => getFixtures({page, limit}), { keepPreviousData: true }); 
 }
 
-export function usePrefetchFixtures({queryClient, page = 1, hasMore}: {queryClient: QueryClient, page?: number, hasMore?: boolean}) {
+export function usePrefetchFixtures({queryClient, page = 1}: {queryClient: QueryClient, page?: number}) {
   React.useEffect(() => {
-    if(hasMore) {
       queryClient.prefetchQuery<FixturesResponse, Error>(['fixtures'], () => getFixtures({page}))
-    }
-  }, [hasMore, page, queryClient])
+  }, [page, queryClient])
 }
