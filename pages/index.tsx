@@ -2,9 +2,10 @@ import Head from 'next/head'
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 
-import { getFixtures, useFixtures, usePrefetchFixtures } from '@/hooks/useFixtures';
+import { getFixtures, useFixtures } from '@/hooks/useFixtures';
 import UpcomingFixtures from '@/modules/fixtures/components/UpcomingFixtures';
 import FixtureLoadingCard from '@/modules/fixtures/components/FixtureLoadingCard';
+import BetSlip from '@/modules/betslip/components/BetSlip';
 
 const Home = () => {
   const { data: fixturesData, isLoading: fixturesLoading, isSuccess: fixturesSuccess } = useFixtures({limit: 2});
@@ -28,6 +29,8 @@ const Home = () => {
           <UpcomingFixtures fixtures={fixturesData.fixtures} /> 
         }
       </section>
+
+      <BetSlip />
     </div>
   )
 }

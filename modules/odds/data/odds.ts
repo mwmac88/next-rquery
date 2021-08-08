@@ -4,82 +4,82 @@ import { FixtureOdds } from "../types";
 export const odds: FixtureOdds = {
   301: [
     {
-      id: 501,
-      name: "Match Odds",
-      type: 'MATCH_ODDS',
-      values: [
+      marketID: 501,
+      marketName: "Match Odds",
+      marketType: 'MATCH_ODDS',
+      selections: [
         {
           selectionID: 6001,
-          value: "Home",
-          odd: getRandomOdd(),
+          selectionName: "Home",
+          selectionValue: getRandomOdd(),
         },
         {
           selectionID: 6002,
-          value: "Draw",
-          odd: getRandomOdd(),
+          selectionName: "Draw",
+          selectionValue: getRandomOdd(),
         },
         {
           selectionID: 6003,
-          value: "Away",
-          odd: getRandomOdd(),
+          selectionName: "Away",
+          selectionValue: getRandomOdd(),
         },
       ],
     },
     {
-      id: 502,
-      name: "Goals Over/Under",
-      type: 'GOALS_OVER_UNDER',
-      values: [
+      marketID: 502,
+      marketName: "Goals Over/Under",
+      marketType: 'GOALS_OVER_UNDER',
+      selections: [
         {
           selectionID: 6004,
-          value: "Over 1.5",
-          odd: getRandomOdd(),
+          selectionName: "Over 1.5",
+          selectionValue: getRandomOdd(),
         },
         {
           selectionID: 6005,
-          value: "Under 1.5",
-          odd: getRandomOdd(),
+          selectionName: "Under 1.5",
+          selectionValue: getRandomOdd(),
         },
       ],
     },
   ],
   302: [
     {
-      id: 501,
-      name: "Match Odds",
-      type: 'MATCH_ODDS',
-      values: [
+      marketID: 501,
+      marketName: "Match Odds",
+      marketType: 'MATCH_ODDS',
+      selections: [
         {
           selectionID: 6101,
-          value: "Home",
-          odd: getRandomOdd(),
+          selectionName: "Home",
+          selectionValue: getRandomOdd(),
         },
         {
           selectionID: 6102,
-          value: "Draw",
-          odd: getRandomOdd(),
+          selectionName: "Draw",
+          selectionValue: getRandomOdd(),
         },
         {
           selectionID: 6103,
-          value: "Away",
-          odd: getRandomOdd(),
+          selectionName: "Away",
+          selectionValue: getRandomOdd(),
         },
       ],
     },
     {
-      id: 502,
-      name: "Goals Over/Under",
-      type: 'GOALS_OVER_UNDER',
-      values: [
+      marketID: 502,
+      marketName: "Goals Over/Under",
+      marketType: 'GOALS_OVER_UNDER',
+      selections: [
         {
           selectionID: 6104,
-          value: "Over 1.5",
-          odd: getRandomOdd(),
+          selectionName: "Over 1.5",
+          selectionValue: getRandomOdd(),
         },
         {
           selectionID: 6105,
-          value: "Under 1.5",
-          odd: getRandomOdd(),
+          selectionName: "Under 1.5",
+          selectionValue: getRandomOdd(),
         },
       ],
     },

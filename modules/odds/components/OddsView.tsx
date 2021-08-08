@@ -1,25 +1,25 @@
 import React, { ReactElement } from "react";
 
-import { useOddsByType, useOddsQuery } from "@/hooks/useOdds";
+import { useOddsByType } from "@/hooks/useOdds";
 import { FixtureID } from "@/common/types";
 import OddCard from "./OddCard";
 import LoadingCard from "./LoadingCard";
-import { OddsType } from "../types";
+import { MarketType } from "../types";
 
 interface Props {
   fixtureID: FixtureID;
-  oddsTypes?: OddsType[];
+  oddsTypes?: MarketType[];
 }
 
-const OddsView: React.FC<Props> = ({ fixtureID, oddsTypes }): ReactElement => {
-  const { data, isLoading, isSuccess } = useOddsByType({fixtureID, oddsTypes});
+const OddsView: React.FC<Props> = ({ fixtureID, oddsTypes: marketTypes }): ReactElement => {
+  const { data, isLoading, isSuccess } = useOddsByType({fixtureID, marketTypes});
 
   if (isLoading) <LoadingCard />
 
   if (data && isSuccess) {
     return (
       <>
-        {data.map(odd => <OddCard key={odd.id} odd={odd} />)}
+        {data.map(odd => <OddCard key={odd.marketID} market={odd} fixtureID={fixtureID} />)}
       </>
     );
   }
