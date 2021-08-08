@@ -14,7 +14,6 @@ const UpcomingFixtures: React.FC<Props> = ({fixtures}): ReactElement => (
         <div className="grid grid-cols-2 row-auto gap-4">
           {Object.values(fixtures).map((fixture) => (
             <div
-              className='cursor-pointer'
               key={fixture.id}
               // onClick={() => router.push({
               //   pathname: "/fixtures/[fixtureID]",

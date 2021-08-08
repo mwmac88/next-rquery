@@ -1,18 +1,18 @@
-import { FixtureID, OddID, SelectionID } from "@/common/types";
+import { FixtureID, MarketID, SelectionID } from "@/common/types";
 
-export type OddsType = 'MATCH_ODDS' | 'GOALS_OVER_UNDER'
+export type MarketType = 'MATCH_ODDS' | 'GOALS_OVER_UNDER'
 
-export type OddsValue = {
+export type Selection = {
   selectionID: SelectionID;
-  value: string;
-  odd: number;
+  selectionName: string;
+  selectionValue: number;
 }
 
-export interface OddWithValues {
-  id: OddID;
-  name: string;
-  type: OddsType;
-  values: OddsValue[];
+export interface MarketWithSelections {
+  marketID: MarketID;
+  marketName: string;
+  marketType: MarketType;
+  selections: Selection[];
 }
 
-export type FixtureOdds = Record<FixtureID, OddWithValues[]>
+export type FixtureOdds = Record<FixtureID, MarketWithSelections[]>

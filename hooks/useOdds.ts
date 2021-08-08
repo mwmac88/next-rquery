@@ -1,8 +1,8 @@
 import { FixtureID } from "@/common/types";
-import { OddsType, OddWithValues } from "@/modules/odds/types";
+import { MarketType, MarketWithSelections } from "@/modules/odds/types";
 import { useQuery } from "react-query";
 
-export const getOdds = async (fixtureID: FixtureID): Promise<OddWithValues[]> => {
+export const getOdds = async (fixtureID: FixtureID): Promise<MarketWithSelections[]> => {
   if (typeof fixtureID === 'undefined') return Promise.reject(new Error('Invalid id'));
   const data = await fetch(
     `http://localhost:3000/api/odds/${fixtureID}`
@@ -20,7 +20,7 @@ export const getOdds = async (fixtureID: FixtureID): Promise<OddWithValues[]> =>
 };
 
 export function useOddsQuery(fixtureID: FixtureID) {
-  return useQuery<OddWithValues[], Error>(
+  return useQuery<MarketWithSelections[], Error>(
     ['odds', fixtureID],
     () => getOdds(fixtureID),
     { 
@@ -29,12 +29,12 @@ export function useOddsQuery(fixtureID: FixtureID) {
     }); 
 }
 
-export function useOddsByType({fixtureID, oddsTypes}: {fixtureID: FixtureID, oddsTypes?: OddsType[]}) {
-  return useQuery<OddWithValues[], Error>(
+export function useOddsByType({fixtureID, marketTypes}: {fixtureID: FixtureID, marketTypes?: MarketType[]}) {
+  return useQuery<MarketWithSelections[], Error>(
     ['odds', fixtureID], 
     () => getOdds(fixtureID),
     { 
-      select: odds => odds.filter(odd => oddsTypes?.includes(odd.type)),
+      select: odds => odds.filter(odd => marketTypes?.includes(odd.marketType)),
       refetchInterval: 30000,
       retry: false 
     }

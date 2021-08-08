@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { OddWithValues } from "@/modules/odds/types";
+import { MarketWithSelections } from "@/modules/odds/types";
 import { odds } from '@/modules/odds/data/odds';
 
 export default function handler(
 	req: NextApiRequest,
-	res: NextApiResponse<OddWithValues[] | Error>
+	res: NextApiResponse<MarketWithSelections[] | Error>
 ){
 	res.setHeader('Cache-Control', 's-maxage=30, stale-while-revalidate');
 	const { fixtureID: fixtureIDParam } = req.query;
