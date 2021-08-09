@@ -15,10 +15,6 @@ const UpcomingFixtures: React.FC<Props> = ({fixtures}): ReactElement => (
           {Object.values(fixtures).map((fixture) => (
             <div
               key={fixture.id}
-              // onClick={() => router.push({
-              //   pathname: "/fixtures/[fixtureID]",
-              //   query: { fixtureID: fixture.id },
-              // })}
             >
               <FixtureCard fixture={fixture}>
                 <OddsView fixtureID={fixture.id} oddsTypes={['MATCH_ODDS']} />

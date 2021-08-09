@@ -41,12 +41,12 @@ const OddCard = ({ market, fixtureID }: Props) => {
                 onClick={() =>
                   updateBetSlipItems({ fixtureID, marketID, selectionID })
                 }
-                className={`rounded-sm mx-auto w-16 ${
+                className={`rounded-sm mx-auto w-16 p-1 ${
                   isFetching ? `disabled` : ``
                 } ${
                   isInBetSlip({ fixtureID, marketID, selectionID })
-                    ? `bg-green-500`
-                    : `bg-blue-700`
+                    ? `bg-green-500 text-white`
+                    : `bg-gray-200 text-gray-800`
                 }`}
               >
                 {isFetching ? (
@@ -58,7 +58,7 @@ const OddCard = ({ market, fixtureID }: Props) => {
                     className="p-4 text-center"
                   />
                 ) : (
-                  <span className="text-white">
+                  <span>
                     {Number(selectionValue).toFixed(2)}
                   </span>
                 )}
