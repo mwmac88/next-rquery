@@ -5,14 +5,20 @@ interface Props {
   marketName: string;
   selectionName: string;
   selectionValue: number;
+  onRemove: () => void;
 }
 
-function BetSlipItem({fixtureName, marketName, selectionName, selectionValue}: Props): ReactElement {
+function BetSlipItem({fixtureName, marketName, selectionName, selectionValue, onRemove}: Props): ReactElement {
   return (
-    <div>
-      <div>{fixtureName}</div>
-      <div>{marketName}</div>
-      <div>{selectionName} @ {Number(selectionValue).toFixed(2)}</div>
+    <div className="flex flex-row p-2 bg-green-500">
+      <div>
+        <div>{fixtureName}</div>
+        <div>{marketName}</div>
+        <div>{selectionName} @ {Number(selectionValue).toFixed(2)}</div>
+      </div>
+      <div>
+        <span className="cursor-pointer" onClick={() => onRemove()}>X</span>
+      </div>
     </div>
   )
 }
