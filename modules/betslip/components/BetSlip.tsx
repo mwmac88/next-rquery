@@ -5,7 +5,7 @@ import { useAtom } from "jotai";
 import React, { ReactElement } from "react";
 import { useQueryClient } from "react-query";
 
-import { betSlipItemsAtom } from "../state";
+import { betSlipReducerAtom } from "../state";
 import BetSlipItem from "./BetSlipItem";
 
 interface BetSlipData {
@@ -15,7 +15,7 @@ interface BetSlipData {
 
 function BetSlip(): ReactElement {
   const queryClient = useQueryClient();
-  const [betSlipItems] = useAtom(betSlipItemsAtom);
+  const [betSlipItems] = useAtom(betSlipReducerAtom);
 
   const betslipData = betSlipItems.reduce((betSlip, item) => {
     const oddsQuery = queryClient.getQueryData<MarketWithSelections[]>([
