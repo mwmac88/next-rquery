@@ -8,7 +8,7 @@ import FixtureLoadingCard from '@/modules/fixtures/components/FixtureLoadingCard
 import BetSlip from '@/modules/betslip/components/BetSlip';
 
 const Home = () => {
-  const { data: fixturesData, isLoading: fixturesLoading, isSuccess: fixturesSuccess } = useFixtures({limit: 2});
+  const { data: fixturesData, isLoading: fixturesLoading, isSuccess: fixturesSuccess } = useFixtures({});
 
   return (
     <div className='container mx-auto px-4'>
@@ -16,6 +16,8 @@ const Home = () => {
         <title>Quid-Bet</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+
+      <BetSlip />
       
       <h1 className="text-3xl font-mono font-bold uppercase text-center">Quid-Bet</h1>
       <h2 className="text-md font-medium italic uppercase text-center">The Only Quidditch Betting Platform</h2>
@@ -30,7 +32,6 @@ const Home = () => {
         }
       </section>
 
-      <BetSlip />
     </div>
   )
 }

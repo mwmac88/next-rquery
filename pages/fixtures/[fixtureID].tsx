@@ -20,7 +20,7 @@ const Fixture = () => {
 
   return (
     <div>
-      
+      No Fixture Here Sorry!
     </div>
   )
 }

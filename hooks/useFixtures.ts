@@ -8,7 +8,7 @@ type UseFixturesProps = {
 }
 
 export const getFixtures = async ({page = 1, limit}: UseFixturesProps): Promise<FixturesResponse> => {
-  const baseFixturesEndpoint = `http://localhost:3000/api/fixtures?page=${page}`;
+  const baseFixturesEndpoint = `/api/fixtures?page=${page}`;
    
   const data = await fetch(
     limit ? `${baseFixturesEndpoint}&limit=${limit}` : baseFixturesEndpoint

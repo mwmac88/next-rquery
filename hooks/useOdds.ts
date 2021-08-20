@@ -1,11 +1,11 @@
-import { FixtureID } from "@/common/types";
+import { FixtureID, MarketID, SelectionID } from "@/common/types";
 import { MarketType, MarketWithSelections } from "@/modules/odds/types";
 import { useQuery } from "react-query";
 
 export const getOdds = async (fixtureID: FixtureID): Promise<MarketWithSelections[]> => {
   if (typeof fixtureID === 'undefined') return Promise.reject(new Error('Invalid id'));
   const data = await fetch(
-    `http://localhost:3000/api/odds/${fixtureID}`
+    `/api/odds/${fixtureID}`
   );
 
   if (data.status === 404) {
@@ -24,6 +24,17 @@ export function useOddsQuery(fixtureID: FixtureID) {
     ['odds', fixtureID],
     () => getOdds(fixtureID),
     { 
+      refetchInterval: 30000,
+      retry: false,
+    }); 
+}
+
+export function useOddsQueryByMarketID(fixtureID: FixtureID, marketID: MarketID) {
+  return useQuery<MarketWithSelections[], Error, MarketWithSelections | undefined>(
+    ['odds', fixtureID],
+    () => getOdds(fixtureID),
+    { 
+      select: odds => odds.find(odd => odd.marketID === marketID),
       refetchInterval: 30000,
       retry: false,
     }); 
