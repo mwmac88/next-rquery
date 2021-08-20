@@ -10,19 +10,19 @@ import { getFixtures } from '@/hooks/useFixtures'
 const Fixture = () => {
   const router = useRouter();
   const { fixtureID } = router.query;
-  const { data } = useFixture(Number(fixtureID));
-  
-  if (data) {
-    const { name } = data;
+  const { data, isError, isSuccess} = useFixture(Number(fixtureID));
 
-    return (<div>{name}</div>)
-  }
-
-  return (
+  if (isError || !isSuccess || !data) { 
+    return (
     <div>
       No Fixture Here Sorry!
     </div>
   )
+    }
+
+    const { name, date, inplay } = data;
+
+    return ( <div><div>{name} @ {date}</div> { inplay ? <div>Match is in-play!</div> : null}</div>)
 }
 
 export async function getStaticPaths() {

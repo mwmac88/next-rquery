@@ -1,11 +1,13 @@
-import { FixtureID, MarketID, SelectionID } from "@/common/types";
+const server = process.env.SERVER;
+
+import { FixtureID, MarketID } from "@/common/types";
 import { MarketType, MarketWithSelections } from "@/modules/odds/types";
 import { useQuery } from "react-query";
 
 export const getOdds = async (fixtureID: FixtureID): Promise<MarketWithSelections[]> => {
   if (typeof fixtureID === 'undefined') return Promise.reject(new Error('Invalid id'));
   const data = await fetch(
-    `/api/odds/${fixtureID}`
+    `${server}/api/odds/${fixtureID}`
   );
 
   if (data.status === 404) {
