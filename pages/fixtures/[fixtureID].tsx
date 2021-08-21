@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 
 import { useFixture } from '@/hooks/useFixture'
 import { QueryClient } from 'react-query'
-import { getFixture } from '@/hooks/useFixture'
 import { dehydrate } from 'react-query/hydration'
 import { getFixtures } from '@/hooks/useFixtures'
 

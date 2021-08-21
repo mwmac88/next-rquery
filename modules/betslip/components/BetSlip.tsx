@@ -1,9 +1,6 @@
-import { FixtureID } from "@/common/types";
-import { FixturesResponse } from "@/modules/fixtures/types";
-import { MarketWithSelections } from "@/modules/odds/types";
 import { useAtom } from "jotai";
 import React, { ReactElement } from "react";
-import { useQueryClient } from "react-query";
+
 
 import { betSlipReducerAtom } from "../state";
 import BetSlipItem from "./BetSlipItem";

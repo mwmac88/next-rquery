@@ -1,5 +1,3 @@
-const server = process.env.SERVER;
-
 import { FixtureID, MarketID } from "@/common/types";
 import { MarketType, MarketWithSelections } from "@/modules/odds/types";
 import { useQuery } from "react-query";
@@ -7,7 +5,7 @@ import { useQuery } from "react-query";
 export const getOdds = async (fixtureID: FixtureID): Promise<MarketWithSelections[]> => {
   if (typeof fixtureID === 'undefined') return Promise.reject(new Error('Invalid id'));
   const data = await fetch(
-    `${server}/api/odds/${fixtureID}`
+    `https://${process.env.NEXT_PUBLIC_SERVER}/api/odds/${fixtureID}`
   );
 
   if (data.status === 404) {

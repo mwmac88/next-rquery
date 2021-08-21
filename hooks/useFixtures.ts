@@ -1,5 +1,3 @@
-const server = process.env.SERVER;
-
 import { FixturesResponse } from "@/modules/fixtures/types";
 import React from "react";
 import { QueryClient, useQuery } from "react-query";
@@ -10,7 +8,7 @@ type UseFixturesProps = {
 }
 
 export const getFixtures = async ({page = 1, limit}: UseFixturesProps): Promise<FixturesResponse> => {
-  const baseFixturesEndpoint = `${server}/api/fixtures?page=${page}`;
+  const baseFixturesEndpoint = `https://${process.env.NEXT_PUBLIC_SERVER}/api/fixtures?page=${page}`;
    
   const data = await fetch(
     limit ? `${baseFixturesEndpoint}&limit=${limit}` : baseFixturesEndpoint
