@@ -1,10 +1,10 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-
-import { useFixture } from '@/hooks/useFixture'
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
-import { getFixtures } from '@/hooks/useFixtures'
+
+import { useFixture } from '@/hooks/useFixture'
+import fixtures from '@/modules/fixtures/data/fixtures';
 
 const Fixture = () => {
   const router = useRouter();
@@ -24,17 +24,13 @@ const Fixture = () => {
     return ( <div><div>{name} @ {date}</div> { inplay ? <div>Match is in-play!</div> : null}</div>)
 }
 
-// export async function getStaticPaths() {
-//   const fixturesEndpoint = new URL(`/api/fixtures?page=1`, `https://${process.env.NEXT_PUBLIC_SERVER}`);
-//   const baseFixturesEndpoint = fixturesEndpoint.href;
-
-//   const {fixtures} = await getFixtures({page: 1});
-//   const fixtureIDs = Object.keys(fixtures);
-//   return {
-//     paths: fixtureIDs.map(id => { return { params: { fixtureID: id } }}),
-//     fallback: false
-//   }
-// }
+export async function getStaticPaths() {
+  const fixtureIDs = Object.keys(fixtures);
+  return {
+    paths: fixtureIDs.map(id => { return { params: { fixtureID: id } }}),
+    fallback: false
+  }
+}
 
 export async function getStaticProps() {
   const queryClient = new QueryClient()
