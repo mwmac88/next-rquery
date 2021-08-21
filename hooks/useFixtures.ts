@@ -8,7 +8,8 @@ type UseFixturesProps = {
 }
 
 export const getFixtures = async ({page = 1, limit}: UseFixturesProps): Promise<FixturesResponse> => {
-  const baseFixturesEndpoint = `https://${process.env.NEXT_PUBLIC_SERVER}/api/fixtures?page=${page}`;
+  const fixturesEndpoint = new URL(`/api/fixtures?page=${page}`, `https://${process.env.NEXT_PUBLIC_SERVER}`);
+  const baseFixturesEndpoint = fixturesEndpoint.href;
    
   const data = await fetch(
     limit ? `${baseFixturesEndpoint}&limit=${limit}` : baseFixturesEndpoint

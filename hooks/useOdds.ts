@@ -4,9 +4,10 @@ import { useQuery } from "react-query";
 
 export const getOdds = async (fixtureID: FixtureID): Promise<MarketWithSelections[]> => {
   if (typeof fixtureID === 'undefined') return Promise.reject(new Error('Invalid id'));
-  const data = await fetch(
-    `https://${process.env.NEXT_PUBLIC_SERVER}/api/odds/${fixtureID}`
-  );
+
+  const oddsEndpoint = new URL(`/api/odds/${fixtureID}`, `https://${process.env.NEXT_PUBLIC_SERVER}`);
+  
+  const data = await fetch(oddsEndpoint.href);
 
   if (data.status === 404) {
     return Promise.reject(data.statusText)
