@@ -1,6 +1,6 @@
-import { Team } from "@/common/types";
+import { Team } from "../types";
 
-const teams:Team[] = [
+const teams: Team[] = [
   {
     id: 201,
     name: 'Appleby Arrows',
