@@ -16,15 +16,14 @@ function BetSlipItem(betSlipItem: BetSlipItemType): ReactElement {
   if (fixtureQueryData.error || !fixtureQueryData.isSuccess) {
     return <div>Uh Oh! Something went wrong</div>
   }
-
-  const { data: { name: fixturesName } } = fixtureQueryData;
-
-  if (oddsQueryData.error || !oddsQueryData.isSuccess || !oddsQueryData.data) {
+  if (oddsQueryData.error || !oddsQueryData.isSuccess || typeof oddsQueryData.data === 'undefined') {
     console.error('Odds missing!')
+    return <div>Uh Oh! Something went wrong</div>
   }
-
-  const marketName = oddsQueryData.data ? oddsQueryData.data.marketName : null;
-  const selection = oddsQueryData.data && oddsQueryData.data.selections.find((selection) => selection.selectionID === selectionID);
+  
+  const { data: { name: fixturesName } } = fixtureQueryData;
+  const marketName = oddsQueryData.data.marketName;
+  const selection = oddsQueryData.data.selections.find((selection) => selection.selectionID === selectionID);
 
   return (
     <div className="flex flex-row p-2 bg-green-500">

@@ -29,14 +29,6 @@ const Team = () => {
     // FixtureCard here
 }
 
-export async function getStaticPaths() {
-  const teamIDs = Object.values(teams);
-  return {
-    paths: teamIDs.map(team => { return { params: { teamID: team.id } }}),
-    fallback: false
-  }
-}
-
 export async function getStaticProps() {
   const queryClient = new QueryClient()
 

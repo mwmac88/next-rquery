@@ -25,7 +25,7 @@ export function useOddsQuery(fixtureID: FixtureID) {
     ['odds', fixtureID],
     () => getOdds(fixtureID),
     { 
-      refetchInterval: 30000,
+      refetchInterval: 5000,
       retry: false,
     }); 
 }
@@ -36,7 +36,7 @@ export function useOddsQueryByMarketID(fixtureID: FixtureID, marketID: MarketID)
     () => getOdds(fixtureID),
     { 
       select: odds => odds.find(odd => odd.marketID === marketID),
-      refetchInterval: 30000,
+      refetchInterval: 5000,
       retry: false,
     }); 
 }
@@ -47,7 +47,7 @@ export function useOddsByType({fixtureID, marketTypes}: {fixtureID: FixtureID, m
     () => getOdds(fixtureID),
     { 
       select: odds => odds.filter(odd => marketTypes?.includes(odd.marketType)),
-      refetchInterval: 30000,
+      refetchInterval: 5000,
       retry: false 
     }
   ); 

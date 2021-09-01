@@ -4,7 +4,6 @@ import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 
 import { useFixture } from '@/hooks/useFixture'
-import fixtures from '@/modules/fixtures/data/fixtures';
 
 const Fixture = () => {
   const router = useRouter();
@@ -24,15 +23,8 @@ const Fixture = () => {
     return ( <div><div>{name} @ {date}</div> { inplay ? <div>Match is in-play!</div> : null}</div>)
 }
 
-export async function getStaticPaths() {
-  const fixtureIDs = Object.keys(fixtures);
-  return {
-    paths: fixtureIDs.map(id => { return { params: { fixtureID: id } }}),
-    fallback: false
-  }
-}
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const queryClient = new QueryClient()
 
   return {
