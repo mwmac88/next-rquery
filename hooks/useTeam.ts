@@ -3,8 +3,7 @@ import { Team } from "@/modules/teams/types";
 import { useQuery } from "react-query";
 
 const getTeam = async (teamID: TeamID): Promise<Team> => {
-  const teamAPI = new URL(`/api/fixtures/${teamID}`, `${process.env.NEXT_PUBLIC_SERVER}`);
-  const data = await fetch(teamAPI.href);
+  const data = await fetch(`/api/fixtures/${teamID}`);
 
   if (!data.ok) {
     return Promise.reject(data.statusText);
