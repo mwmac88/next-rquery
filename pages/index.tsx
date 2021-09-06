@@ -36,7 +36,7 @@ const Home = () => {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const queryClient = new QueryClient()
   await queryClient.prefetchQuery(['fixtures'], () => getFixtures({page: 1}));
 

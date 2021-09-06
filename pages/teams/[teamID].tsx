@@ -29,7 +29,7 @@ const Team = () => {
     // FixtureCard here
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const queryClient = new QueryClient()
 
   return {
