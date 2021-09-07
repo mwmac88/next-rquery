@@ -7,7 +7,6 @@ export default function handler(
 	req: NextApiRequest,
 	res: NextApiResponse<MarketWithSelections[] | Error>
 ){
-	res.setHeader('Cache-Control', 's-maxage=30, stale-while-revalidate');
 	const { fixtureID: fixtureIDParam } = req.query;
 	const fixtureID = Number(fixtureIDParam);
 

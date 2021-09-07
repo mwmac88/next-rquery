@@ -14,7 +14,7 @@ export const getFixtures = async ({page = 1, limit}: UseFixturesProps): Promise<
     limit ? `${baseFixturesEndpoint}&limit=${limit}` : baseFixturesEndpoint
   );
 
-  if (!data.ok) {
+  if (data.status === 404 || !data.ok) {
     return Promise.reject(data.statusText)
   }
 

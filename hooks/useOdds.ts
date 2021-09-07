@@ -7,11 +7,7 @@ export const getOdds = async (fixtureID: FixtureID): Promise<MarketWithSelection
   
   const data = await fetch(`/api/odds/${fixtureID}`);
 
-  if (data.status === 404) {
-    return Promise.reject(data.statusText)
-  }
-
-  if (!data.ok) {
+  if (data.status === 404 || !data.ok) {
     return Promise.reject(data.statusText)
   }
 
@@ -23,7 +19,7 @@ export function useOddsQuery(fixtureID: FixtureID) {
     ['odds', fixtureID],
     () => getOdds(fixtureID),
     { 
-      refetchInterval: 5000,
+      refetchInterval: 10000,
       retry: false,
     }); 
 }
@@ -34,7 +30,7 @@ export function useOddsQueryByMarketID(fixtureID: FixtureID, marketID: MarketID)
     () => getOdds(fixtureID),
     { 
       select: odds => odds.find(odd => odd.marketID === marketID),
-      refetchInterval: 5000,
+      refetchInterval: 10000,
       retry: false,
     }); 
 }
@@ -45,7 +41,7 @@ export function useOddsByType({fixtureID, marketTypes}: {fixtureID: FixtureID, m
     () => getOdds(fixtureID),
     { 
       select: odds => odds.filter(odd => marketTypes?.includes(odd.marketType)),
-      refetchInterval: 5000,
+      refetchInterval: 10000,
       retry: false 
     }
   ); 

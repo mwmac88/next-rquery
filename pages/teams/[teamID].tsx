@@ -1,32 +1,41 @@
 import React from 'react'
+import Image from 'next/image';
 import { useRouter } from 'next/router'
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 
-// import { useFixturesByTeamID } from '@/hooks/useFixtures'
 import teams from '@/modules/teams/data/teams';
 import { useTeam } from '@/hooks/useTeam'
 
 const Team = () => {
   const router = useRouter();
   const { teamID } = router.query;
-  const teamData = useTeam(Number(teamID));
-  // const fixturesData = useFixturesByTeamID(Number(fixtureID));
+  const { data, isError, isSuccess } = useTeam(Number(teamID));
 
-  if (teamData.isError || !teamData.isSuccess || !teamData) { 
-    return (
-        <div>
-          No Team Here Sorry!
-        </div>
-      )
-    }
+  if (data) {
+    const {logoSrc, name} = data;
 
     return (
       <div>
-        Team stuff goes here!
+        Team: {name}
+        {logoSrc ? <Image src={`/${logoSrc}`} width="80" height="80" alt={data.name} /> : null}
       </div>
     )
-    // FixtureCard here
+  }
+
+  if (isError || !isSuccess) { 
+    return (
+      <div>
+        No Team Here Sorry!
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      Loading!
+    </div>
+  )
 }
 
 export async function getServerSideProps() {
