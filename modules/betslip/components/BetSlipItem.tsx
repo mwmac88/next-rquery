@@ -26,7 +26,7 @@ function BetSlipItem(betSlipItem: BetSlipItemType): ReactElement {
   const selection = oddsQueryData.data.selections.find((selection) => selection.selectionID === selectionID);
 
   return (
-    <div className="flex flex-row p-2 bg-green-500">
+    <div className="flex flex-row p-2 bg-green-500 rounded-sm">
       <div>
         <div>{fixturesName}</div>
          <div>{marketName}</div>

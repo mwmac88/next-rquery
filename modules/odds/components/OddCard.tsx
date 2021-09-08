@@ -15,7 +15,7 @@ interface Props {
 }
 
 const OddCard = ({ market, fixtureID }: Props) => {
-  const isFetching = useIsFetching();
+  const isFetching = useIsFetching(['odds', fixtureID]);
   const [betSlipItems, updateBetSlip] = useAtom(betSlipReducerAtom);
   const isInBetSlip = (betSlipItem: BetSlipItem) =>
     betSlipItems.some((item: BetSlipItem) => isEqual(item, betSlipItem));

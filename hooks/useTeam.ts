@@ -2,10 +2,12 @@ import { TeamID } from "@/common/types";
 import { Team } from "@/modules/teams/types";
 import { useQuery } from "react-query";
 
-const getTeam = async (teamID: TeamID): Promise<Team> => {
-  const data = await fetch(`/api/teams/${teamID}`);
+export const getTeam = async (teamID: TeamID): Promise<Team> => {
+  const teamAPI = new URL(`/api/teams/${teamID}`, `${process.env.NEXT_PUBLIC_SERVER}`);
 
-  if (data.status === 404 || !data.ok) {
+  const data = await fetch(teamAPI.href);
+
+  if (!data.ok) {
     return Promise.reject(data.statusText)
   }
 

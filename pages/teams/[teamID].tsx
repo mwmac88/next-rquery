@@ -4,8 +4,9 @@ import { useRouter } from 'next/router'
 import { QueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 
-import teams from '@/modules/teams/data/teams';
-import { useTeam } from '@/hooks/useTeam'
+import { getTeam, useTeam } from '@/hooks/useTeam'
+
+type Context = { params: { teamID: string } };
 
 const Team = () => {
   const router = useRouter();
@@ -38,8 +39,10 @@ const Team = () => {
   )
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context: Context) {
   const queryClient = new QueryClient()
+  const { teamID } = context.params;
+  queryClient.prefetchQuery(['team', teamID], () => getTeam(Number(teamID)));
 
   return {
     props: {

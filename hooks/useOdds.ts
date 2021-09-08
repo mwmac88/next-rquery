@@ -4,14 +4,15 @@ import { useQuery } from "react-query";
 
 export const getOdds = async (fixtureID: FixtureID): Promise<MarketWithSelections[]> => {
   if (typeof fixtureID === 'undefined') return Promise.reject(new Error('Invalid id'));
+  const oddsAPI = new URL(`/api/odds/${fixtureID}`, `${process.env.NEXT_PUBLIC_SERVER}`);
   
-  const data = await fetch(`/api/odds/${fixtureID}`);
+  const response = await fetch(oddsAPI.href);
 
-  if (data.status === 404 || !data.ok) {
-    return Promise.reject(data.statusText)
+  if (!response.ok) {
+    throw new Error("Problem fetching data");
   }
 
-  return Promise.resolve(data.json())
+  return await response.json();
 };
 
 export function useOddsQuery(fixtureID: FixtureID) {
@@ -19,8 +20,7 @@ export function useOddsQuery(fixtureID: FixtureID) {
     ['odds', fixtureID],
     () => getOdds(fixtureID),
     { 
-      refetchInterval: 10000,
-      retry: false,
+      refetchInterval: 15000,
     }); 
 }
 
@@ -30,8 +30,8 @@ export function useOddsQueryByMarketID(fixtureID: FixtureID, marketID: MarketID)
     () => getOdds(fixtureID),
     { 
       select: odds => odds.find(odd => odd.marketID === marketID),
-      refetchInterval: 10000,
-      retry: false,
+      refetchInterval: 15000,
+      staleTime: 15000
     }); 
 }
 
@@ -40,9 +40,9 @@ export function useOddsByType({fixtureID, marketTypes}: {fixtureID: FixtureID, m
     ['odds', fixtureID], 
     () => getOdds(fixtureID),
     { 
-      select: odds => odds.filter(odd => marketTypes?.includes(odd.marketType)),
-      refetchInterval: 10000,
-      retry: false 
+      select: odds => odds && odds.filter(odd => marketTypes?.includes(odd.marketType)),
+      refetchInterval: 15000,
+      retry: false
     }
   ); 
 }

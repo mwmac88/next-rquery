@@ -8,10 +8,10 @@ import { MarketType } from "../types";
 
 interface Props {
   fixtureID: FixtureID;
-  oddsTypes?: MarketType[];
+  marketTypes?: MarketType[];
 }
 
-const OddsView: React.FC<Props> = ({ fixtureID, oddsTypes: marketTypes }): ReactElement => {
+const OddsView: React.FC<Props> = ({ fixtureID, marketTypes = ['MATCH_ODDS'] }): ReactElement => {
   const { data, isLoading, isSuccess } = useOddsByType({fixtureID, marketTypes});
 
   if (isLoading) <LoadingCard />
