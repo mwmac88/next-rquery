@@ -50,16 +50,16 @@ export function useFixtures({ page, limit }: UseFixturesProps) {
 //   );
 // }
 
-export function usePrefetchFixtures({
-  queryClient,
-  page = 1,
-}: {
-  queryClient: QueryClient;
-  page?: number;
-}) {
-  React.useEffect(() => {
-    queryClient.prefetchQuery<FixturesResponse, Error>(["fixtures"], () =>
-      getFixtures({ page })
-    );
-  }, [page, queryClient]);
-}
+// export function usePrefetchFixtures({
+//   queryClient,
+//   page = 1,
+// }: {
+//   queryClient: QueryClient;
+//   page?: number;
+// }) {
+//   React.useEffect(() => {
+//     queryClient.prefetchQuery<FixturesResponse, Error>(["fixtures"], () =>
+//       getFixtures({ page })
+//     );
+//   }, [page, queryClient]);
+// }

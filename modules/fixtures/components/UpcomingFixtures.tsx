@@ -17,7 +17,7 @@ const UpcomingFixtures: React.FC<Props> = ({fixtures}): ReactElement => (
               key={fixture.id}
             >
               <FixtureCard fixture={fixture}>
-                <OddsView fixtureID={fixture.id} oddsTypes={['MATCH_ODDS']} />
+                <OddsView fixtureID={fixture.id} marketTypes={['MATCH_ODDS']} />
               </FixtureCard>
             </div>
           ))}
