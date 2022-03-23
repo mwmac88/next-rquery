@@ -1,4 +1,4 @@
-This is a project to explore [react-query](https://react-query.tanstack.com) within the [Next.js](https://nextjs.org/) framework. 
+This project was created to explore the [react-query](https://react-query.tanstack.com) library within the [Next.js](https://nextjs.org/) framework. 
 
 The aim of this project was to gain an understanding of how react-query can be employed to assist with the seperation of concerns between local client state and server state. A further aim was to understand the performance benefits gained by utilising this library.
 
