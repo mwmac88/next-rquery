@@ -3,7 +3,7 @@ import { Team } from "@/modules/teams/types";
 import { useQuery } from "react-query";
 
 export const getTeam = async (teamID: TeamID): Promise<Team> => {
-  const data = await fetch(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/teams/${teamID}`);
+  const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/api/teams/${teamID}`);
 
   if (!data.ok) {
     return Promise.reject(data.statusText)
