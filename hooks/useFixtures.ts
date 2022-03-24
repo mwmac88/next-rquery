@@ -12,7 +12,7 @@ export const getFixtures = async ({
   page = 1,
   limit,
 }: UseFixturesProps): Promise<FixturesResponse> => {
-  const fixturesEndpoint = `${process.env.NEXT_PUBLIC_SERVER}/api/fixtures?page=${page}`
+  const fixturesEndpoint = `${location.protocol}${process.env.NEXT_PUBLIC_SERVER}/api/fixtures?page=${page}`
 
   const data = await fetch(
     limit ? `${fixturesEndpoint}&limit=${limit}` : fixturesEndpoint
