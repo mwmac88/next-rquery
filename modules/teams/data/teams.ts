@@ -1,13 +1,13 @@
-import { Team } from "@/common/types";
+import { Team } from "../types";
 
-const teams:Team[] = [
+const teams: Team[] = [
   {
     id: 201,
     name: 'Appleby Arrows',
     county: 'Cumbria',
     country: 'England',
     league: 'British and Irish Quidditch League',
-    logoSrc: 'https://static.wikia.nocookie.net/harrypotter/images/4/46/Appleby_Arrows.png'
+    logoSrc: 'appleby_arrows.png'
   },
   {
     id: 202,
@@ -15,7 +15,7 @@ const teams:Team[] = [
     county: 'Ballycastle',
     country: 'Northern Ireland',
     league: 'British and Irish Quidditch League',
-    logoSrc: 'https://static.wikia.nocookie.net/harrypotter/images/a/a4/Ballycastle_Bats.png'
+    logoSrc: 'ballycastle_bats.png'
   },
   {
     id: 203,
@@ -30,7 +30,7 @@ const teams:Team[] = [
     county: 'Caerphilly',
     country: 'Wales',
     league: 'British and Irish Quidditch League',
-    logoSrc: 'https://static.wikia.nocookie.net/harrypotter/images/8/89/Caerphilly_Catapults.png'
+    logoSrc: 'caerphilly_catapults.png'
   },
   {
     id: 205,
@@ -38,7 +38,7 @@ const teams:Team[] = [
     county: 'Chudley',
     country: 'England',
     league: 'British and Irish Quidditch League',
-    logoSrc: 'https://static.wikia.nocookie.net/harrypotter/images/2/24/ChudleyCannons.png'
+    logoSrc: 'chudley_cannons.png'
   },
   {
     id: 206,
@@ -46,7 +46,7 @@ const teams:Team[] = [
     county: 'Falmouth',
     country: 'England',
     league: 'British and Irish Quidditch League',
-    logoSrc: 'https://static.wikia.nocookie.net/harrypotter/images/f/ff/Falmouth_Falcons.png'
+    logoSrc: 'falmouth_falcons.png'
   },
   {
     id: 207,
@@ -54,7 +54,7 @@ const teams:Team[] = [
     county: 'Kerry',
     country: 'Ireland',
     league: 'British and Irish Quidditch League',
-    logoSrc: 'https://static.wikia.nocookie.net/harrypotter/images/6/6f/Kenmare_Kestrels.png'
+    logoSrc: 'kenmare_kestrels.png'
   },
   {
     id: 208,
@@ -62,7 +62,7 @@ const teams:Team[] = [
     county: 'Montrose',
     country: 'Scotland',
     league: 'British and Irish Quidditch League',
-    logoSrc: 'https://static.wikia.nocookie.net/harrypotter/images/a/af/Montrose_Magpies.png'
+    logoSrc: 'montrose_magpies.png'
   },  
 ]
 

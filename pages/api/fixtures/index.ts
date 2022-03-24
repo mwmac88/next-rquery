@@ -7,11 +7,12 @@ const PAGINATION_LENGTH = 5;
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<FixturesResponse>
+  res: NextApiResponse<FixturesResponse | Error>
 ) {
   let hasMore = false;
   let fixturesResponse = fixtures;
-  const {page: pageQuery, limit} = req.query;
+
+  const { page: pageQuery, limit } = req.query;
   const page = Number(pageQuery) || 1;
   const fixturesLength = Object.keys(fixtures).length;
   const limitAmount = Number(limit) || PAGINATION_LENGTH;

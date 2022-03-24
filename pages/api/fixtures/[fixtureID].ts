@@ -14,5 +14,7 @@ export default function handler(
 		return res.status(404).send(new Error(`No fixture found for ${fixtureID}`));
 	}
 
+  fixtures[fixtureID].inplay = Math.random() < 0.5;
+  
   res.status(200).json(fixtures[fixtureID])
 }

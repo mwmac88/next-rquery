@@ -1,6 +1,6 @@
 import React from "react";
 
-const LoadingCard = () => {
+const FixtureLoadingCard = () => {
   return (
     <div className="animate-pulse border border-solid border-gray-200 rounded-md drop-shadow shadow p-4">
       <div className="space-y-2">
@@ -11,4 +11,4 @@ const LoadingCard = () => {
   );
 };
 
-export default LoadingCard;
+export default FixtureLoadingCard;

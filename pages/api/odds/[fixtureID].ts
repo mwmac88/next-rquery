@@ -1,13 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { OddWithValues } from "@/modules/odds/types";
+import { MarketWithSelections } from "@/modules/odds/types";
 import { odds } from '@/modules/odds/data/odds';
+import { getRandomOdd } from "@/common/utils";
 
 export default function handler(
 	req: NextApiRequest,
-	res: NextApiResponse<OddWithValues[] | Error>
+	res: NextApiResponse<MarketWithSelections[] | Error>
 ){
-	res.setHeader('Cache-Control', 's-maxage=30, stale-while-revalidate');
 	const { fixtureID: fixtureIDParam } = req.query;
 	const fixtureID = Number(fixtureIDParam);
 
@@ -15,6 +15,8 @@ export default function handler(
 		console.error(`No odds for fixtureID : ${fixtureID}`)
 		return res.status(404).send(new Error(`No odds found for ${fixtureID}`));
 	}
+
+	odds[fixtureID].forEach(odd => odd.selections.forEach(selection => selection.selectionValue = getRandomOdd()));
 
 	return res.status(200).json(odds[fixtureID])
 }
