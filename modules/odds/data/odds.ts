@@ -166,4 +166,45 @@ export const odds: FixtureOdds = {
       ],
     },
   ],
+  305: [
+    {
+      marketID: 501,
+      marketName: "Match Odds",
+      marketType: 'MATCH_ODDS',
+      selections: [
+        {
+          selectionID: 6501,
+          selectionName: "Home",
+          selectionValue: getRandomOdd(),
+        },
+        {
+          selectionID: 6502,
+          selectionName: "Draw",
+          selectionValue: getRandomOdd(),
+        },
+        {
+          selectionID: 6503,
+          selectionName: "Away",
+          selectionValue: getRandomOdd(),
+        },
+      ],
+    },
+    {
+      marketID: 502,
+      marketName: "Goals Over/Under",
+      marketType: 'GOALS_OVER_UNDER',
+      selections: [
+        {
+          selectionID: 6504,
+          selectionName: "Over 1.5",
+          selectionValue: getRandomOdd(),
+        },
+        {
+          selectionID: 6505,
+          selectionName: "Under 1.5",
+          selectionValue: getRandomOdd(),
+        },
+      ],
+    },
+  ],
 };
