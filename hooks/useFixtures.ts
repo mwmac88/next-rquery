@@ -12,14 +12,10 @@ export const getFixtures = async ({
   page = 1,
   limit,
 }: UseFixturesProps): Promise<FixturesResponse> => {
-  const fixturesEndpoint = new URL(
-    `/api/fixtures?page=${page}`,
-    `${process.env.NEXT_PUBLIC_SERVER}`
-  );
-  const baseFixturesEndpoint = fixturesEndpoint.href;
+  const fixturesEndpoint = `/api/fixtures?page=${page}`
 
   const data = await fetch(
-    limit ? `${baseFixturesEndpoint}&limit=${limit}` : baseFixturesEndpoint
+    limit ? `${fixturesEndpoint}&limit=${limit}` : fixturesEndpoint
   );
 
   if (data.status === 404 || !data.ok) {
