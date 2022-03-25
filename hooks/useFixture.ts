@@ -3,7 +3,8 @@ import { Fixture } from "@/modules/fixtures/types";
 import { useQuery } from "react-query";
 
 export const getFixture = async (fixtureID: FixtureID): Promise<Fixture> => {
-  const data = await fetch(`${location.protocol}${process.env.NEXT_PUBLIC_SERVER}/api/fixtures/${fixtureID}`);
+  const fixtureAPI = new URL(`/api/fixtures/${fixtureID}`, process.env.NEXT_PUBLIC_SERVER);
+  const data = await fetch(fixtureAPI.toString());
 
   if (data.status === 404 || !data.ok) {
     return Promise.reject(data.statusText);
