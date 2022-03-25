@@ -1,7 +1,7 @@
 import {  FixturesResponse } from "@/modules/fixtures/types";
 
 import React from "react";
-import { QueryClient, useQuery } from "react-query";
+import { useQuery } from "react-query";
 
 type UseFixturesProps = {
   page?: number;
@@ -16,7 +16,7 @@ export const getFixtures = async ({
 
   if (limit) fixturesEndpoint.searchParams.append('limit', String(limit))
   
-  const data = await fetch(fixturesEndpoint.toString());
+  const data = await fetch(fixturesEndpoint.href);
 
   if (data.status === 404 || !data.ok) {
     return Promise.reject(data.statusText);

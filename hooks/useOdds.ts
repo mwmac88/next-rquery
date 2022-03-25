@@ -6,7 +6,7 @@ export const getOdds = async (fixtureID: FixtureID): Promise<MarketWithSelection
   if (typeof fixtureID === 'undefined') return Promise.reject(new Error('Invalid id'));
   
   const fixtureAPI = new URL(`/api/odds/${fixtureID}`, process.env.NEXT_PUBLIC_SERVER);
-  const data = await fetch(fixtureAPI.toString());
+  const data = await fetch(fixtureAPI.href);
 
   if (!data.ok) {
     throw new Error("Problem fetching data");

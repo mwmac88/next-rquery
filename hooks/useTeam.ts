@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 
 export const getTeam = async (teamID: TeamID): Promise<Team> => {
   const fixtureAPI = new URL(`/api/teams/${teamID}`, process.env.NEXT_PUBLIC_SERVER);
-  const data = await fetch(fixtureAPI.toString());
+  const data = await fetch(fixtureAPI.href);
 
   if (!data.ok) {
     return Promise.reject(data.statusText)
